@@ -7,10 +7,10 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class initData implements ApplicationListener<ContextRefreshedEvent> {
+public class InitData implements ApplicationListener<ContextRefreshedEvent> {
     private UserRepository userRepository;
 
-    public initData(UserRepository userRepository) {
+    public InitData(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
