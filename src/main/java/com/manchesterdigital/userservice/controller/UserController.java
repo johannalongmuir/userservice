@@ -1,10 +1,12 @@
 package com.manchesterdigital.userservice.controller;
 
 import com.manchesterdigital.userservice.repository.UserRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+@RequestMapping("/users")
+@Controller
 public class UserController {
 
     private UserRepository userRepository;
@@ -13,13 +15,11 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/users")
-    public String getUsers(){
-        return userRepository.findAll().toString();
-
+    @RequestMapping({"", "/", "index", "index.html"})
+    public String listAllUsers(Model model){
+        model.addAttribute("users", userRepository.findAll());
+        return "users/index";
     }
-
-
 
 
 
