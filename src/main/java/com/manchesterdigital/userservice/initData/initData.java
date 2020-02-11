@@ -20,16 +20,18 @@ public class initData implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     private void addData() {
-        User johanna = new User("Johanna", "Longmuir");
-        User emma = new User("Emma", "Dudley");
-        User emmaSmith = new User("Emma", "Smith");
-        emmaSmith.setAddress("123 Main Road");
-        User john  = new User("John", "Smith");
-        User jane = new User("Jane", "Doe");
-        userRepository.save(johanna);
-        userRepository.save(emma);
+        User johannaLongmuir = new User("Johanna", "Longmuir");
+        User emmaDudley = new User("Emma", "Dudley");
+        User emmaSmith = new User("Emma", "Smith", "123 Main Road");
+        User johnSmith  = new User("John", "Smith");
+        User janeDoe = new User("Jane", "Doe", "123 Main Road");
+        User craigLongmuir = new User("Craig", "Longmuir", "Australia");
+
+        userRepository.save(johannaLongmuir);
+        userRepository.save(emmaDudley);
         userRepository.save(emmaSmith);
-        userRepository.save(john);
-        userRepository.save(jane);
+        userRepository.save(johnSmith);
+        userRepository.save(janeDoe);
+        userRepository.save(craigLongmuir);
     }
 }
