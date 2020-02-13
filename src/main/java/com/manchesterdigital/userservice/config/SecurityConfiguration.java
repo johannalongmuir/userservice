@@ -7,7 +7,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    //TODO be careful of this with production. https://springframework.guru/using-the-h2-database-console-in-spring-boot-with-spring-security/
+    //TODO be careful of this with production. Can use h2 console as approved for now with this.
+    // https://springframework.guru/using-the-h2-database-console-in-spring-boot-with-spring-security/
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests().antMatchers("/").permitAll().and()
