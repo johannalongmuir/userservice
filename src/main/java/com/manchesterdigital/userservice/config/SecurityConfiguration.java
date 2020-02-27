@@ -9,21 +9,21 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    //TODO be careful of this with production. Can use h2 console as approved for now with this.
     // https://springframework.guru/using-the-h2-database-console-in-spring-boot-with-spring-security/
+    // https://docs.spring.io/spring-security/site/docs/current/guides/html5/hellomvc-javaconfig.html
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-
         http
                 .authorizeRequests()
                     .antMatchers("/resources/**").permitAll()
                     .antMatchers("/home").permitAll()
                     .antMatchers("/users/index").permitAll()   //TODO remove this. Just added so could look at it when practicing.
-                    .antMatchers("/console/**").permitAll()
-                    .anyRequest()
-                        .authenticated()
+                    .antMatchers("/h2-console/**").permitAll()
+                    .antMatchers("/login/added").permitAll()
+                    .antMatchers("/users/create").permitAll()
+                    .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
+                    .anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/login")
@@ -33,20 +33,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .permitAll();
         http.csrf().disable();
         http.headers().frameOptions().disable();
-
     }
 
-
-    // fix this. Depreciated
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("password")
-//                        .roles("USER")
-//                        .build();
-//        return new InMemoryUserDetailsManager(user);
+// TODO LOOK AT THIS.
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("admin").password("password").roles("ROLE_USER");
 //    }
+
 }

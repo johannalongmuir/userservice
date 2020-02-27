@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -17,13 +18,20 @@ public class UserDTO {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Name is mandatory")
+    private String userName;
+
+    @NotBlank(message = "Name is mandatory")
     private String firstName;
 
+    @NotBlank(message = "Name is mandatory")
     private String lastName;
+
 
     private String address;
 
-    // password? Encripted
+    //encripted!
+    private String password;
 
 
     public UserDTO() {
@@ -32,11 +40,13 @@ public class UserDTO {
     public UserDTO(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = firstName + lastName;
     }
 
     public UserDTO(String firstName, String lastName, String address) {
         this(firstName, lastName);
         this.address = address;
+
     }
 
     @Override

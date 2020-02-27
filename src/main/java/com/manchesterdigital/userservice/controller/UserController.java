@@ -7,8 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @RequestMapping("/users")
 @Controller
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping(value = {"create", "create/"})
-    public String createNewUser(Model model, @RequestBody  UserDTO userDTO){
+    public String createNewUser(Model model, @Valid UserDTO userDTO){
         model.addAttribute("user", userRepository.save(userDTO));
         return "users/added";
     }
