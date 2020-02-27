@@ -1,2 +1,2 @@
 # userservice
-user service
+userDTO service

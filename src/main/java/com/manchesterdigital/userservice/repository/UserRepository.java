@@ -1,10 +1,10 @@
 package com.manchesterdigital.userservice.repository;
 
-import com.manchesterdigital.userservice.entity.User;
+import com.manchesterdigital.userservice.entity.UserDTO;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<UserDTO, Long> {
 
-//    User findByUsername(String username);
+//    UserDTO findByUsername(String username);
 
 }

@@ -32,6 +32,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     compile 'com.h2database:h2'
     compileOnly 'org.projectlombok:lombok:1.18.10'
+
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.2.4.RELEASE'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
@@ -39,6 +40,10 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.security:spring-security-test'
+
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+    compile 'io.springfox:springfox-core:2.9.2'
 }
 
 dependencyManagement {

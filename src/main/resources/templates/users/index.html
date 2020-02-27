@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Users</title>
 </head>
-<!--@thymesVar id="user" type=com.manchesterdigital.userservice.entity.User"*-->
+<!--@thymesVar id="userDTO" type=com.manchesterdigital.userservice.entity.UserDTO"*-->
 <body>
 <table>
     <tr>
@@ -12,10 +12,10 @@
         <th>FirstName</th>
         <th>LastName</th>
     </tr>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.id}"> 1 </td>
-        <td th:text="${user.firstName}"> John </td>
-        <td th:text="${user.lastName}"> Smith </td>
+    <tr th:each="userDTO : ${users}">
+        <td th:text="${userDTO.id}"> 1 </td>
+        <td th:text="${userDTO.firstName}"> John </td>
+        <td th:text="${userDTO.lastName}"> Smith </td>
     </tr>
 
 

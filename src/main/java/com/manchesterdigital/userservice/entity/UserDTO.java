@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class User {
+public class UserDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,22 +26,22 @@ public class User {
     // password? Encripted
 
 
-    public User() {
+    public UserDTO() {
     }
 
-    public User(String firstName, String lastName) {
+    public UserDTO(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public User(String firstName, String lastName, String address) {
+    public UserDTO(String firstName, String lastName, String address) {
         this(firstName, lastName);
         this.address = address;
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserDTO{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

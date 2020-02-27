@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<body>
+<p> Created User! </p>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+    </tr>
+        <td th:text="${user.id}"> 1 </td>
+        <td th:text="${user.firstName}"> John </td>
+        <td th:text="${user.lastName}"> Smith </td>
+    </tr>
+</table>
+</body>
+</html>

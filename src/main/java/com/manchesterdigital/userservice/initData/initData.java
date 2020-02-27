@@ -1,6 +1,6 @@
 package com.manchesterdigital.userservice.initData;
 
-import com.manchesterdigital.userservice.entity.User;
+import com.manchesterdigital.userservice.entity.UserDTO;
 import com.manchesterdigital.userservice.repository.UserRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -20,12 +20,12 @@ public class initData implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     private void addData() {
-        User johannaLongmuir = new User("Johanna", "Longmuir");
-        User emmaDudley = new User("Emma", "Dudley");
-        User emmaSmith = new User("Emma", "Smith", "123 Main Road");
-        User johnSmith  = new User("John", "Smith");
-        User janeDoe = new User("Jane", "Doe", "123 Main Road");
-        User craigLongmuir = new User("Craig", "Longmuir", "Australia");
+        UserDTO johannaLongmuir = new UserDTO("Johanna", "Longmuir");
+        UserDTO emmaDudley = new UserDTO("Emma", "Dudley");
+        UserDTO emmaSmith = new UserDTO("Emma", "Smith", "123 Main Road");
+        UserDTO johnSmith  = new UserDTO("John", "Smith");
+        UserDTO janeDoe = new UserDTO("Jane", "Doe", "123 Main Road");
+        UserDTO craigLongmuir = new UserDTO("Craig", "Longmuir", "Australia");
 
         userRepository.save(johannaLongmuir);
         userRepository.save(emmaDudley);
