@@ -1,14 +1,9 @@
 package com.manchesterdigital.userservice.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @EnableWebSecurity
 @Configuration
@@ -20,39 +15,38 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http
-//                .authorizeRequests()
-//                  .antMatchers("/", "/home").permitAll()
-//                  .anyRequest().authenticated()
-//                  .and()
-//                .formLogin()
-//                  .loginPage("/login")
-//                  .permitAll()
-//                  .and()
-//                .logout()
-//                .permitAll();
 
         http
                 .authorizeRequests()
-                    .antMatchers("/").permitAll()
+                    .antMatchers("/resources/**").permitAll()
+                    .antMatchers("/home").permitAll()
+                    .antMatchers("/users/index").permitAll()   //TODO remove this. Just added so could look at it when practicing.
+                    .antMatchers("/console/**").permitAll()
+                    .anyRequest()
+                        .authenticated()
                     .and()
-                .authorizeRequests()
-                    .antMatchers("/console/**").permitAll();
+                .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
+                    .and()
+                .logout()
+                    .permitAll();
         http.csrf().disable();
         http.headers().frameOptions().disable();
 
     }
 
-    @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build();
 
-        return new InMemoryUserDetailsManager(user);
-    }
+    // fix this. Depreciated
+//    @Bean
+//    @Override
+//    public UserDetailsService userDetailsService() {
+//        UserDetails user =
+//                User.withDefaultPasswordEncoder()
+//                        .username("user")
+//                        .password("password")
+//                        .roles("USER")
+//                        .build();
+//        return new InMemoryUserDetailsManager(user);
+//    }
 }
